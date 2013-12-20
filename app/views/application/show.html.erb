@@ -1,0 +1,101 @@
+<html>
+<head>
+
+    <script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+
+</head>
+
+<body>
+
+
+</script>
+
+
+
+
+<% if (@Available_course.length == 0) %>
+ <script >   
+    alert("There are no courses associated with these selections") 
+    window.location.href="/search"
+ </script>
+
+<% end %> 
+<!--<h2><%= params.inspect %></h2> to inspect the params -->
+
+
+                             
+
+<!-- Button trigger modal -->
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading">
+      <h4>
+          The 
+              <% @category_name.each do |categoryname| %> 
+              <%= categoryname.category_name%>
+              <% end %>
+              courses in 
+              <% @country_name.each do |counntryname| %> 
+              <%= counntryname.country_name%>
+              <% end %> :
+      </h4>
+
+  </div>
+
+  <%if user_signed_in? %>
+<div class="panel-body">
+  <p> Clink Job Analysis To View the Job Avaiability in last one year for the below courses. !!</p>
+  
+   <%else%>
+  
+  <div class="panel-body">
+    <h4> You can see the Job Availability, by Registering or Signing in !!! </h4>
+    
+
+
+    <%end%>
+
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+   <thead>
+    <tr>
+      <th>College Name</th>
+      <th>City</th>
+      <th>Specialization</th>
+      <th>Award</th>
+    </tr>
+</thead>
+  <tbody>
+    <% @Available_course.each do |data| %>        
+  <tr>
+    <td><%= data.college_name %><% link_to %></td> 
+    <td><%= data.city %></td>  
+    <td><%= data.specialization_name %></td> 
+    <td><%= data.award_type %></td> 
+       
+  </tr>
+    <% end %>
+  </tbody>
+
+</table>
+</div>
+
+<%if user_signed_in? %>
+  <div class="btn-group icons">
+    <%= button_to "Job Analysis",
+              :method => 'post',
+              :controller => "search",
+              :action => "show_job" ,
+              :category_id => @category_id, 
+              :country_id => @country_id,
+              :class => 'btn btn-primary btn-large'
+               %>
+  </div>
+<%end%>
+
+
+</body>
+</html>

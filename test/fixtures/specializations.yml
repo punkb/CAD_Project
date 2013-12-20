@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  category: 
+  college: 
+  specialization_name: MyString
+  award_type: MyString
+  duration: MyString
+  mode_of_delivery: MyString
+  fees: MyString
+  description: MyText
+
+two:
+  category: 
+  college: 
+  specialization_name: MyString
+  award_type: MyString
+  duration: MyString
+  mode_of_delivery: MyString
+  fees: MyString
+  description: MyText

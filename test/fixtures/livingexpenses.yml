@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  City: MyString
+  Country_name: MyString
+  FoodCost: 1
+  AccomodationCost: 1
+  TransportationCost: 1
+  UserID: MyString
+
+two:
+  City: MyString
+  Country_name: MyString
+  FoodCost: 1
+  AccomodationCost: 1
+  TransportationCost: 1
+  UserID: MyString

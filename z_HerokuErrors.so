@@ -1,0 +1,21 @@
+linking shared-object v8/init.so
+       /usr/bin/ld: /tmp/build_d944fa39-1ee8-4c60-9f9c-b5977c02ed6a/vendor/bundle/ruby/2.0.0/gems/libv8-3.16.14.0/vendor/v8/out/x64.release/obj.target/tools/gyp/libv8_base.a(api.o): relocation R_X86_64_32S against `vtable for v8::ScriptData' can not be used when making a shared object; recompile with -fPIC
+       /tmp/build_d944fa39-1ee8-4c60-9f9c-b5977c02ed6a/vendor/bundle/ruby/2.0.0/gems/libv8-3.16.14.0/vendor/v8/out/x64.release/obj.target/tools/gyp/libv8_base.a: could not read symbols: Bad value
+       collect2: ld returned 1 exit status
+       make: *** [init.so] Error 1
+       
+       
+       Gem files will remain installed in /tmp/build_d944fa39-1ee8-4c60-9f9c-b5977c02ed6a/vendor/bundle/ruby/2.0.0/gems/therubyracer-0.12.0 for inspection.
+       Results logged to /tmp/build_d944fa39-1ee8-4c60-9f9c-b5977c02ed6a/vendor/bundle/ruby/2.0.0/gems/therubyracer-0.12.0/ext/v8/gem_make.out
+       An error occurred while installing therubyracer (0.12.0), and Bundler cannot
+       continue.
+       Make sure that `gem install therubyracer -v '0.12.0'` succeeds before bundling.
+ !
+ !     Failed to install gems via Bundler.
+ !
+
+ !     Push rejected, failed to compile Ruby app
+
+To git@heroku.com:thawing-crag-8548.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'git@heroku.com:thawing-crag-8548.git'

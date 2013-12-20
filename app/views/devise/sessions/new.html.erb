@@ -1,0 +1,85 @@
+<html>
+<head>
+
+
+
+<link rel="stylesheet" type="text/css" href="assets/stylesheet/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/stylesheet/signin.css">
+</head>
+
+  <body>
+
+    <div class="container">
+    	<div class = "row">
+    		
+    		<div class="row-fluid">
+  <div class="span4 well offset3">
+
+     <%= form_for(resource, :as => resource_name, 
+     						:url => session_path(resource_name), 
+     						:html=> {
+     							:class =>"form-signin", 
+     							:role=> "form" 
+     						}) do |f| %>
+
+  <div class="control-group">
+  		<%= f.label "Email", :html => {:class => "control-label"}  %><br/>
+  <div class="controls">	
+  		<%= f.email_field :email, :autofocus => true %></div>
+  <div class="control-group">
+	 	 <%= f.label :password %><br/>
+  <div class="controls"> 	 
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> 
+    	<%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div ><%= f.submit :class => "btn btn-primary btn-medium"  %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+-->
+</div>
+</form>
+
+
+  </div>
+</div>
+</div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  
+
+
+     
+<!--
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div><%= f.submit "Sign in" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+-->
+</form>
+</div>
+
+</body>
+
+
+</html>

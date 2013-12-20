@@ -1,0 +1,77 @@
+<html>
+	<head>
+
+<link rel="stylesheet" type="text/css" href="assets/stylesheet/bootstrap.css"
+	</head>
+
+		<body>
+
+<div class="container">
+  <div class="row-fluid">
+  	<div class="span5 well">
+
+		<table>
+			<%= form_for :searchrequest, url: {controller: 'application', action: "show"} do |f| %>
+	<tr>
+		<td><%= f.label :country_name %></td>
+		<td>
+			<%= f.collection_select :id, 
+									Country.all(:order => "country_name"),
+									:id, 
+									:country_name, 
+									:prompt => true, 
+									:selected => params[:country_id]
+			%>
+		</td>
+	</tr>	
+	<tr>
+		<td><%= f.label :category_name %></td>
+		<td>
+			<%= f.collection_select :category_id,
+			 						Category.all(:order => "category_name"), 
+			 						:id, 
+			 						:category_name, 
+			 						:prompt => true, 
+			 						:selected => params[:category_id] %> 
+		</td>
+	</tr>
+	<tr>
+	     <td><%= f.label :specialzation_name   %></td>
+		<td><%= f.collection_select :specialization_name, 
+									Specialization.all(:order => "specialization_name"), 
+									:specialization_name, 
+									:specialization_name, 
+									:prompt => true, 
+									:selected => params[:specialization_name]%> </br>
+		</td>
+	</tr>
+			</table>
+	<!-- " :include_blank => true " (if fild need blank option)-->
+	<div class="control-group">
+    	<div class="controls">
+    	
+			<%= f.submit :class => "btn btn-primary btn-medium" %>
+		</div>
+	</div>
+			
+	</div>
+	<div class = "container">
+	<div class= "span7 well">
+		<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+
+ 
+
+	</div>
+</div>	
+</div>
+
+</div>
+			<% end -%>
+	</body>
+
+		
+</html>

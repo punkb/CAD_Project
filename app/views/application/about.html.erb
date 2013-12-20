@@ -1,0 +1,17 @@
+<h1>About us</h1>
+<script type="text/javascript">
+$(function() {
+    var selectedValue = ''; // declare variable here
+
+    // on drop down change
+    $('#ddlComp').change(function() {
+        selectedValue = $(this).val(); // store value in variable
+        $('#txtCompName').val(selectedValue); // update on change
+    });
+
+    // on submit button click
+    $('input[type=submit]').click(function(){
+        $('#txtCompName').val(selectedValue); // update on submit button
+    });
+});
+</script>

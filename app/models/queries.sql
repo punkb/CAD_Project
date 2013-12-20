@@ -1,0 +1,1 @@
+Specialization.joins(:college).where("country_id == '1'").where("specialization_name=='Cloud Computing'")

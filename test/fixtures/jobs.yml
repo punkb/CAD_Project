@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  country: 
+  category: 
+  number_of_job: 1
+  date: 2013-12-10
+
+two:
+  country: 
+  category: 
+  number_of_job: 1
+  date: 2013-12-10

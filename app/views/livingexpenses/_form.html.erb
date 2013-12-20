@@ -1,0 +1,45 @@
+<%= form_for @livingexpense, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :City, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :City, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Country_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select :Country_name, Country.all(:order => "country_name"),:country_name, :country_name, :prompt => true, :selected => params[:Country_name] ,:class => '.form-control' %>
+      
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :FoodCost, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :FoodCost, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :AccomodationCost, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :AccomodationCost, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :TransportationCost, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :TransportationCost, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :UserID, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :UserID, :class => 'text_field' ,:value => current_user.email, :readonly => true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                livingexpenses_path, :class => 'btn' %>
+  </div>
+<% end %>

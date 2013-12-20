@@ -1,0 +1,160 @@
+<!--<h3>Ths is Job Page in Views/search calling show_job method </h3> -->
+<!--<h4>
+   
+
+
+</h4> -->
+<!--
+<h4>
+    Category: 
+      to inspect the params
+      <h3><%= params.inspect %></h3>
+      
+</h4>
+-->
+<html>
+<head>
+    <!--
+    <script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+-->
+<script src="assets/javascript/highcharts.js.coffee"></script>
+<link rel="stylesheet" type="text/css" href="assets/stylesheet/bootstrap.css">
+
+  <!--Use MooTools or Prototype-->
+
+
+<!--
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/highcharts.js"></script>
+
+-->
+<!--script src="http://code.highcharts.com/highcharts.js"></script-->
+
+
+<!--script type="text/javascript" src="/js/themes/gray.js"></script-->
+
+
+</head>
+
+<body>
+
+<% @jobArray = Array.new()%>
+<% @catName = Array.new()%>
+<h4>
+    The Jobs Analysis for 
+        <% @category_name.each do |categoryname| %> 
+        <%= categoryname.category_name%>
+        <% end %>
+    in 
+        <% @country_name.each do |counntryname| %> 
+        <%= counntryname.country_name%>
+        <% end %> 
+    - Year 2013 </br>
+    
+        <% @Available_jobs.each do |j| %>        
+        <%j.number_of_job %>
+        <%@jobArray.push j.number_of_job%>
+     
+        <%end%>    
+      <%@result = LimitedCurrency.conversion("USD",50)%>
+      Result is <%=@result%>
+
+      <%@change=PerChange.get_monthly_percent_change(@jobArray)%>
+      <%=@change%>
+</h4>
+<!--
+<%= @jobArray %>
+-->
+<!--
+<%= params.inspect%>
+-->
+
+<!--
+<div id="container" align "right" style="width:100%; height:400px;"></div>
+-->
+<div class="row">
+  <div class = "span8">
+    <div class = "align-right"> 
+        <div id="container">
+            <script> 
+                $(function () { 
+            $('#container').highcharts({
+                chart: {
+                    type: 'area'
+                },
+                title: {
+                    text: 'Job Analysis'
+                },
+                xAxis: {
+                    categories: ['Jan', 'feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of Jobs'
+                    }
+                },
+                series: [{
+                    name: 'Jobs',
+                   
+                    data: <%= @jobArray %>
+                    //data: [1, 0, 4]
+                         }
+                        ]
+                 });
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<div class = "container">
+    <div class="col-lg-3 well">
+      <div class = "align-right">  
+              
+      <h5>Living Expenses</h5>         
+                     
+       <% @country_expense.each do |c| %>
+       
+       <li>Accomodation:  <span class="badge"><%= c.AccomodationCost%> Euro</span></li>
+       <li>Food:          <span class="badge"><%= c.FoodCost%> Euro</span></li>
+       <li>Transport:     <span class="badge"><%= c.TransportationCost%> Euro</span></li> 
+       <%@total=(c.AccomodationCost+c.FoodCost+c.TransportationCost)%>           
+               
+<%end%>
+<li><h5> Total </h5> Euro <%=@total%></li>
+<%@USD=LimitedCurrency.conversion("USD",@total)%>
+<li>Total in USD:<%=@USD%></li>
+
+<p>The Cost in </p>
+<p id="totalcost"></p>
+<select id="currency_selected" name="culture" onchange="fetchvalue()" >
+    <option value="USD">US Dollar</option>
+    <option value="INR">Indian Rupees</option>
+    <option value="CHF">Swiss Franc</option>    
+</select>
+
+
+   <script type="text/javascript">
+<% require "convertcurrency" %>
+function fetchvalue()
+{
+var totalamt= <%= @total%>
+var e=document.getElementById("currency_selected");
+var strUser = e.options[e.selectedIndex].value 
+
+
+var totalcost= <%=LimitedCurrency.conversion(@st,@total)%>;
+document.getElementById("totalcost").innerHTML=totalcost;
+}
+
+
+
+
+
+
+
+   </script>
+            
+ </body>      
+
+</html>
